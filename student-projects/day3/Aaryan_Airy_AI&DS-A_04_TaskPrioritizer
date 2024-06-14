@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galactic Task Prioritizer</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            text-align: center;
+            background: linear-gradient(to bottom, #021d49, #004d7a);
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .task-form {
+            margin-bottom: 20px;
+        }
+        
+        input, select, button {
+            margin: 10px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: transparent;
+            color: #fff;
+        }
+        
+        input::placeholder {
+            color: #ccc;
+        }
+        
+        button {
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        button:hover {
+            background-color: #0056b3;
+        }
+        
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        li {
+            margin: 10px;
+            padding: 10px;
+            border-radius: 4px;
+            background-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <h1>Galactic Task Prioritizer</h1>
+    <div class="task-form">
+        <input type="text" id="taskName" placeholder="Enter task name">
+        <select id="priority">
+            <option value="high">Critical Mission</option>
+            <option value="medium">Space Exploration</option>
+            <option value="low">Routine Maintenance</option>
+        </select>
+        <button onclick="addTask()">Launch Task</button>
+    </div>
+    <ul id="taskList"></ul>
+    <script>
+        function addTask() {
+            const taskName = document.getElementById('taskName').value;
+            const priority = document.getElementById('priority').value;
+            
+            if (taskName.trim() === '') {
+                alert('Please enter a task name.');
+                return;
+            }
+            
+            const taskList = document.getElementById('taskList');
+            const taskItem = document.createElement('li');
+            taskItem.textContent = `${taskName} (Priority: ${priority})`;
+            taskList.appendChild(taskItem);
+            
+            document.getElementById('taskName').value = '';
+        }
+    </script>
+</body>
+</html>
